@@ -1,4 +1,4 @@
-import { isEven } from './utils';
+import { isEven, IHaveAMessage } from './utils';
 
 describe('array methods', () => {
     // These are methods available on any array in JavaScript.
@@ -112,8 +112,33 @@ describe('array methods', () => {
         });
 
     });
+    describe('structural typing', () => {
+        // in Javascript, if I have a function of loging somnething to the console...
+        // THERE IS NO VOID RETURN IN JAVASCRIPT.  You can say it is a void, but it's just style ot tell people it's not returning anything
+        // Javascript can take any old thing and accept it, and move on with life.
+        // "Duck Typing" - if it looks like a duck, and talks like a duck, it's probably a duck.
+        // it's pretty cool and fun to use, as C# things require data types, and is strictly typed.
+        // it makes the method way to specific in C# when you do that.
 
+        // Anonomous interfaces are OK, you can do it in line, but it's OK... it's like you've been through the desert on a horse with no name.
+        it('an example', () => {
 
+            function logIt(thingy: IHaveAMessage): void {
+                console.log(thingy.message + ' from: ' + thingy.from);
+            }
+
+            const call = {
+                from: 'Mom',
+                message: 'Call me.',
+                time: '4:00 PM'
+            };
+
+            logIt(call);
+
+            // logIt({ from: 'Joe', message: 'Tacos are ready', time: 'Noon'})
+
+        });
+    });
 });
 
 describe(`two loops you might use, but probably won't`, () => {
@@ -132,12 +157,12 @@ describe(`two loops you might use, but probably won't`, () => {
             author: 'Morton'
         };
 
-        for (const prop in book) { // the IN is the keyword here...
+        for (const prop in book) {
             console.log(`Movie's ${prop} is ${book[prop]}`);
             // Will Output the enumeration of through the book's properties.
             // 'Movie's title is Hyperobjects'
             // 'Movie's author is Morton'
-        }
+        } // the IN is the keyword here...
 
     });
     it('the way more useful "for of" loop', () => {
