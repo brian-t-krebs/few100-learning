@@ -157,6 +157,5 @@ describe('functions', () => {
 
                 expect(customerMaker('Bob Smith')).toBe('<customer>Bob Smith</customer>');
             });
-
         });
     });
